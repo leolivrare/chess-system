@@ -1,6 +1,13 @@
-package chesslayer;
+package chessLayer;
 
-import boardlayer.Board;
+import boardLayer.Board;
+import boardLayer.Position;
+import chessLayer.pieces.Bishop;
+import chessLayer.pieces.King;
+import chessLayer.pieces.Knight;
+import chessLayer.pieces.Pawn;
+import chessLayer.pieces.Queen;
+import chessLayer.pieces.Rook;
 
 public class ChessMatch {
 
@@ -8,6 +15,7 @@ public class ChessMatch {
 	
 	public ChessMatch() {
 		board = new Board(8,8);
+		initialSetup();
 	}
 	
 	public ChessPiece[][] getPieces() {
@@ -18,5 +26,28 @@ public class ChessMatch {
 			}
 		}
 		return mat;
+	}
+	
+	private void initialSetup() {
+		//White pieces
+		insertGroupOfPieces(Color.WHITE, 7, 6);
+		
+		//Black pieces
+		insertGroupOfPieces(Color.BLACK, 0, 1);
+	}
+	
+	private void insertGroupOfPieces(Color color, int row1, int row2) {
+		board.placePiece(new Rook(board, color), new Position(row1, 0));
+		board.placePiece(new Rook(board, color), new Position(row1, 7));
+		board.placePiece(new Knight(board, color), new Position(row1, 1));
+		board.placePiece(new Knight(board, color), new Position(row1, 6));
+		board.placePiece(new Bishop(board, color), new Position(row1, 2));
+		board.placePiece(new Bishop(board, color), new Position(row1, 5));
+		board.placePiece(new Queen(board, color), new Position(row1, 3));
+		board.placePiece(new King(board, color), new Position(row1, 4));
+		
+		for(int i=0; i<board.getColumns(); i++) {
+			board.placePiece(new Pawn(board, color), new Position(row2, i));
+		}
 	}
 }

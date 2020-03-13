@@ -1,4 +1,4 @@
-package boardlayer;
+package boardLayer;
 
 public class Piece {
 	
