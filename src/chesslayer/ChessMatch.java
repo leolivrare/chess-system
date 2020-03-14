@@ -30,13 +30,13 @@ public class ChessMatch {
 	
 	private void initialSetup() {
 		//White pieces
-		insertGroupOfPieces(Color.WHITE, 7, 6);
+		insertInitialGroupOfPieces(Color.WHITE, 7, 6);
 		
 		//Black pieces
-		insertGroupOfPieces(Color.BLACK, 0, 1);
+		insertInitialGroupOfPieces(Color.BLACK, 0, 1);
 	}
 	
-	private void insertGroupOfPieces(Color color, int row1, int row2) {
+	private void insertInitialGroupOfPieces(Color color, int row1, int row2) {
 		board.placePiece(new Rook(board, color), new Position(row1, 0));
 		board.placePiece(new Rook(board, color), new Position(row1, 7));
 		board.placePiece(new Knight(board, color), new Position(row1, 1));
