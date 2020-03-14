@@ -34,6 +34,12 @@ public class ChessMatch {
 		
 		//Black pieces
 		insertInitialGroupOfPieces(Color.BLACK, 0, 1);
+		
+		placeNewPiece('d', 4, new King(board, Color.BLACK));
+	}
+	
+	private void placeNewPiece(char column, int row, ChessPiece piece) {
+		board.placePiece(piece, new ChessPosition(column, row).toPosition());
 	}
 	
 	private void insertInitialGroupOfPieces(Color color, int row1, int row2) {
@@ -45,7 +51,7 @@ public class ChessMatch {
 		board.placePiece(new Bishop(board, color), new Position(row1, 5));
 		board.placePiece(new Queen(board, color), new Position(row1, 3));
 		board.placePiece(new King(board, color), new Position(row1, 4));
-		
+				
 		for(int i=0; i<board.getColumns(); i++) {
 			board.placePiece(new Pawn(board, color), new Position(row2, i));
 		}
