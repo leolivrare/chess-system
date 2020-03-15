@@ -35,7 +35,6 @@ public class ChessMatch {
 		//Black pieces
 		insertInitialGroupOfPieces(Color.BLACK, 0, 1);
 		
-		placeNewPiece('d', 4, new King(board, Color.BLACK));
 	}
 	
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
