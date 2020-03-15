@@ -1,6 +1,7 @@
 package chessLayer;
 
 import boardLayer.Board;
+import boardLayer.Piece;
 import boardLayer.Position;
 import chessLayer.pieces.Bishop;
 import chessLayer.pieces.King;
@@ -28,6 +29,10 @@ public class ChessMatch {
 		return mat;
 	}
 	
+	
+	//ALTERAR O JEITO DE POSICIONAR AS PECAS
+	
+	
 	private void initialSetup() {
 		//White pieces
 		insertInitialGroupOfPieces(Color.WHITE, 7, 6);
@@ -54,5 +59,26 @@ public class ChessMatch {
 		for(int i=0; i<board.getColumns(); i++) {
 			board.placePiece(new Pawn(board, color), new Position(row2, i));
 		}
+	}
+	
+	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+		Position source = sourcePosition.toPosition();
+		Position target = targetPosition.toPosition();
+		validateSourcePosition(source);
+		Piece capturedPiece = makeMove(source, target);
+		return (ChessPiece) capturedPiece;
+	}
+	
+	public void validateSourcePosition(Position position) {
+		if (!board.thereIsAPiece(position)) {
+			throw new ChessException("Nao há nenhuma peça na posicao inicial!");
+		}
+	}
+	
+	public Piece makeMove(Position source, Position target) {
+		Piece p = board.removePiece(source);
+		Piece capturedPiece = board.removePiece(target);
+		board.placePiece(p, target);
+		return capturedPiece;
 	}
 }
