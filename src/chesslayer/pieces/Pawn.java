@@ -15,4 +15,11 @@ public class Pawn extends ChessPiece{
 		return "P";
 	}
 
+	@Override
+	public boolean[][] possibleMoves() {
+		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+		
+		return mat;
+	}
+
 }
