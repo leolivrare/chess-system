@@ -15,6 +15,9 @@ public abstract class ChessPiece extends Piece{
 		this.color = color;
 	}
 
+	public int getMoveCount() {
+		return moveCount;
+	}
 
 	public Color getColor() {
 		return color;
@@ -26,5 +29,11 @@ public abstract class ChessPiece extends Piece{
 		return piece != null && piece.getColor() != color;
 	}
 	
+	protected void increaseMoveCount() {
+		moveCount += 1;
+	}
 	
+	protected void decreaseMoveCount() {
+		moveCount -= 1;
+	}
 }

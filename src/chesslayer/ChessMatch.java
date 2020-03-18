@@ -91,6 +91,8 @@ public class ChessMatch {
 		Piece p = board.removePiece(source);
 		Piece capturedPiece = board.removePiece(target);
 		board.placePiece(p, target);
+		ChessPiece aux = (ChessPiece) p;
+		aux.increaseMoveCount();
 		return capturedPiece;
 	}
 }
